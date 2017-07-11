@@ -1,0 +1,13 @@
+.list-item-jq {
+  background-color: white;
+  transition: background-color 2s;
+}
+
+.shade {
+  background-color: red;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+}
