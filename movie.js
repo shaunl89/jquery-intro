@@ -27,24 +27,34 @@ $(document).ready(function () {
 
 // search for movies according to keywords typed and clicking search button
   var $form = $('form')
-  $form.on('click', function () {
-    var $userInput = $(this).serializeArray()[0].value
-    console.log($userInput)
+  var $button = $('button')
+
+  $button.on('click', function () {
+
+    $('#loadingWheel').css('visibility', 'visible')
+    var $searchInput = $('.searchInput')
+    console.log($searchInput.val())
+    $('.posters').empty()
+
+    // var $userInput = $(this).serializeArray()[0].value
+    // console.log($userInput)
 
     var movie_search_url = 'https://api.themoviedb.org/3/search/movie?api_key=e5dc0f217cb84bdccd69333ad48b2cf4&query='
 
-    $.get(movie_search_url + $userInput)
+    $.get(movie_search_url + $searchInput.val())
     .done(function (data) {
+      $('#loadingWheel').css('visibility', 'hidden')
+
       var movie_json = data.results
 
       for (var j = 0; j < movie_json.length; j++) {
         var $newLi = $('<li>')
         var $newImg = $('<img>')
         $newImg.attr('src', image_url + movie_json[j].poster_path)
+        $newImg.attr('height', '400px')
         $newLi.append($newImg)
         $('ul').append($newLi)
       }
     })
-
   })
 })

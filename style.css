@@ -11,3 +11,11 @@ li {
   list-style-type: none;
   display: inline-block;
 }
+
+#loadingWheel{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 150px;
+  visibility: hidden;
+}
